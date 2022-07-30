@@ -29,3 +29,14 @@
 import './index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
+
+const func = async () => {
+  const versions = (window as any).versions;
+  for(const name in versions) {
+    console.log(`${name}: ${versions[name]()}`);
+  }
+  const response = await (window as any).api.ping();
+  console.log(response); // prints out 'pong'
+}
+
+func();
